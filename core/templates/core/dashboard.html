@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        header {
+            background-color: #a0522d; /* Brown color */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            background-color: #fff;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #a0522d; /* Brown color */
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #a0522d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to your dashboard, {{ user.username }}!</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Your Profile</h2>
+            <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Counselor Status:</strong> {% if profile %} {% if profile.is_counselor %}Yes{% else %}No{% endif %} {% else %}No profile found{% endif %}</p>
+        </section>
+    
+        <section>
+            <h2>Upcoming Sessions</h2>
+            {% if sessions %}
+                <ul>
+                    {% for session in sessions %}
+                        <li><strong>Date:</strong> {{ session.date }} | <strong>Counselor:</strong> {{ session.counselor.username }} | <strong>Status:</strong> {{ session.status }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No upcoming sessions.</p>
+            {% endif %}
+        </section>
+    
+        <section>
+            <h2>Book a Session</h2>
+            <p>Click below to schedule a new counseling session.</p>
+            <a href="{% url 'book_session' %}">Book Now</a>
+        </section>
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2024 Counseling Platform | All rights reserved</p>
+    </footer>
+</body>
+</html>

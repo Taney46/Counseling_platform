@@ -1,0 +1,15 @@
+<!-- counselor_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counselors List</title>
+</head>
+<body>
+    <h1>Counselors</h1>
+    <ul>
+        {% for counselor in counselors %}
+            <li>{{ counselor.first_name }} {{ counselor.last_name }} - {{ counselor.email }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

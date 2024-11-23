@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        header {
+            background-color: #a0522d; /* Brown */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #a0522d;
+            color: white;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book a Session</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label for="counselor">Select a Counselor:</label>
+            <select name="counselor" id="counselor">
+                {% for counselor in counselors %}
+                    <option value="{{ counselor.id }}">{{ counselor.user.first_name }} {{ counselor.user.last_name }} - {{ counselor.specialization }}</option>
+                {% endfor %}
+            </select>
+
+            {{ form.as_p }}  <!-- This will render the date field properly -->
+            
+            <button type="submit">Book Now</button>
+        </form>
+    </main>
+</body>
+</html>

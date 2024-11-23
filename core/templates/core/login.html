@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Form</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+            header {
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+            nav a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #333;
+            }
+            main {
+                margin: 20px;
+            }
+            footer {
+                margin-top: 20px;
+                background-color: #f4f4f4;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Log In Here:</h1>
+            <nav>
+                <a href="{% url 'homepage' %}">Home</a>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </nav>
+        </header>
+        <main>
+            <h2>Enter your details here:</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+            </form>
+            {% if form.errors %}
+                <div style="color: red; margin-top: 10px;">
+                    <p>Invalid username or password. Please try again.</p>
+                </div>
+            {% endif %}
+        </main>
+        <footer>
+            <p>&copy; 2024 Counseling Platform</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Counseling Platform</title>
+    </head>
+    <body>
+        <header>
+            <h1>WELCOME TO THE COUNSELING PLATFORM</h1>
+            <nav>
+                <a href="{% url 'homepage' %}">Home</a>
+
+                
+                <a href="{% url 'logout' %}">Logout</a>
+                
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+                
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h2>Find Support for Mental Health</h2>
+                <p>
+                    We are here to provide guidance and support for anyone struggling with anxiety, depression, 
+                    and other mental health issues.
+                </p>
+                <p>Feel free to browse our resources or schedule a session with a counselor.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Counseling Platform | All rights reserved</p>
+        </footer>
+    </body>
+</html>
